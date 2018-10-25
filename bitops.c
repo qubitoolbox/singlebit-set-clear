@@ -1,6 +1,6 @@
 /*
 	I affirm originality of this program,
-	Osman D morales.
+	Osman D Morales.
 
 	This program prompts a user to enter
 	a value in the range of 0-1000, in order
@@ -12,10 +12,11 @@
 
 	example of command line parsing via getopt
 	usage:  [-p]
+	p flag must be set
 
 	Paul Krzyzanowski
 */
-
+//import libraries
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -27,7 +28,7 @@
 #define MOD10 10
 #define ZERO 0
 #define RANGMAX 1000
-//int debug = 0;
+
 //getopt
 int main(int argc, char **argv)
 {
@@ -55,14 +56,18 @@ int main(int argc, char **argv)
 	char prompt;
 	int option;
 	//mask value
+	//32 bit mask
 	uint32_t mask = 0x80000000; //left most bit set to 1
-
+	//begin loop for getop and set flag
 	while ((c = getopt(argc, argv, ":p")) != -1)
 		switch (c) {
 		case 'p':
+			//when pflag set by user, sets to 1
 			pflag = 1;
 			//condition to check that user input is withing range
+			// of 0 and 10000
 			printf ("\nType a value from 0 - 1000\n");
+			//store unsigned integers in var
 			scanf("%u", &initialValue);
 			int q;
 			//checks that bits range is between 0 - 32
@@ -86,6 +91,7 @@ int main(int argc, char **argv)
 			}
 
 			break;
+		//lflag is not used in this exampled, thus commented out
 		case 'l':
 			//lflag = 1;
 			break;
@@ -103,7 +109,7 @@ int main(int argc, char **argv)
 	//when p flag is set compute mask
 	if(pflag)
 	{
-
+		//display menu options to user
 		printf ("\n**Options**\n");
 		printf ("1. Press 0 to clear a bit\n");
 		printf ("2. Press 1 to set a bit\n");

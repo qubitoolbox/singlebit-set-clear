@@ -1,5 +1,3 @@
-
-
 bitops:bitops.o
 	gcc -o bitops bitops.c
 
